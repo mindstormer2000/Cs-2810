@@ -4,6 +4,8 @@
 
 ### Getting Started (Mac)
 
+####Opening the LC3
+
 Reference: http://www.cis.upenn.edu/~cdmurphy/cit593/resources/lc3guide.html
 
 1. Download the Simulator:
@@ -19,6 +21,16 @@ cd /Users/johndoe/Documents/
 ```
 ./PennSim.jar
 ```
+####Running the application
 
+1. Copy the address of Project.asm
+
+2. Type in the console "as " + ctrl-v
+
+3. Look at the same place Project.asm was and copy the address of Project.obj
+
+4. Type in the console "load " + ctrl-v
+
+5. Type in the console Continue
 
 ### Getting Started (Win)
