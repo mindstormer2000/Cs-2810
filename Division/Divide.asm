@@ -64,9 +64,11 @@ JUMP	LD R5 PCJUMP	;Load into R5 the area where the code should go after running
 	JMP R5	
 ;All the variables
 	HALT
-DIVISOR	.FILL #0
-DIVIDED	.FILL #0
-REMDER	.FILL #0
-TOTAL	.FILL #0
+;Inputs
+DIVISOR	.FILL #3
+DIVIDED	.FILL #10
+;Outputs
+REMDER	.FILL #1
+TOTAL	.FILL #3
 PCJUMP	.FILL x0000
 	.END
