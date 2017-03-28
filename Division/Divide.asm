@@ -24,37 +24,44 @@ POS	ADD R7, R7, #0
 	NOT R7, R7
 	ADD R7, R7, #1
 
-LOOPPOS	ADD R7, R6,R7	;Subtract the divisor from divided
+LOOPPOS
+	ADD R6, R6,R7	;Subtract the divisor from divided
 	BRn FINALP	;Check to see if negative
 	ADD R5, R5, #1	;If not negative add 1 to R5
 	BRnzp LOOPPOS	;Loop again
 FINALP	NOT R7, R7	;Twos complement
 	ADD R7, R7, #1	;Twos complement
-	ADD R7, R6, R7	;Go back to the time when it was positive
+	ADD R6, R6, R7	;Go back to the time when it was positive
 	ST R5 TOTAL	;Store the final total
 	ST R6 REMDER	;Store the remainder
+	BRnzp JUMP
 
 NEG	ADD R7, R7, #0
 	BRp LOOPNEG
 	NOT R7, R7
 	ADD R7, R7, #1
 
-LOOPNEG	ADD R7, R6,R7	;Subtract the divisor from divided
+LOOPNEG	ADD R6, R6,R7	;Subtract the divisor from divided
 	BRp FINALN	;Check to see if negative
 	ADD R5, R5, #1	;If not negative add 1 to R5
 	BRnzp LOOPPOS	;Loop again
 
 FINALN	NOT R7, R7	;Twos complement
 	ADD R7, R7, #1	;Twos complement
-	ADD R7, R6, R7	;Go back to the time when it was negative
+	ADD R6, R6, R7	;Go back to the time when it was negative
 	NOT R6, R6	;Twos complement
 	ADD R6, R6, #1	;Twos complement
 	ST R5 TOTAL	;Store the final total
 	ST R6 REMDER	;Store the remainder
+	BRnzp JUMP
 
 ;If the number being divided is zero
 ZERO	ST R6 REMDER
 	ST R6 TOTAL
+	BRnzp JUMP
+;Jump back to the position in PCJUMP VAR
+JUMP	LD R5 PCJUMP	;Load into R5 the area where the code should go after running
+	JMP R5	
 ;All the variables
 	HALT
 DIVISOR	.FILL #0
