@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Square function	@cday
 - Division function 	@cday
+- Added prompt file	@Alex
+
 
 
 
