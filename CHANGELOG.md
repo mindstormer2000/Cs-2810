@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added prompt file			@Alex
 - Modified the return on multiple files @Dayson
 - Added SquareRoot file			@Dayson
+- Edited square root file		@caiden
 
 
 
