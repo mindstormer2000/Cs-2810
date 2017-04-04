@@ -1,5 +1,4 @@
 	;This program takes two numbers and divides them.
-	;this edit is made for kaya to test
 	;The outputs will be put into the memory at two different locations
 	;Outputs: Remainder, Answer
 	;Inputs: Divided, Divisor
