@@ -1,9 +1,10 @@
 .ORIG x3000					;For Division to work, Registers 7, 6, and 5 need to be open. Division is R6/R7=TOTAL,REMDER
-;						;Square code also requires 7, 6, and 5 be open.
-;						
+						;Square code also requires 7, 6, and 5 be open.
+						
 	LD	R0 	NUMBER			;R0 holds Number. Will later need to work with Input from framework
 	LD	R1 	NUMBER			;R1 holds Previous. This is used when/if the loop fails the first time to store previous numbers. Begins as Number.
 	AND	R2	R2,#0			;R2 remains open for TOTAL to go into. All dividends are stored in R2.
+
 SQRTEST	LD	R3	NUMBER			;R3 holds SquareTestNumber. This is where NUMBER/2^2 is stored for comparison. Division is also performed on this register.
 	LD	R4 	RTCOUNT			;R4 holds RootCounter. Each iteration this goes down by 1, to prevent an infinite loop. Termination at R4=#0.
 	LD	R6	DIVJUMP			;R6 holds division code's address. R6 will also be used to check if SQTEST^2=NUMBER when not being used for Division
@@ -54,6 +55,7 @@ ENDING	LEA 	R0	OUTRO			;load address to string
 ;	ADD	R3, R3, x0001			;ADD 1 to the square root to finish 2's compliment
 	LD	R3	SQROOT			;Load the square root into SQROOT for use in the main framework
 ;	
+
 CLOSED	HALT
 NUMBER	.FILL	#9					;Assuming first program's result was 9. This section will need an update when the Framework is ready. Presently not compatible with remainders
 ;SQRTEST	.FILL	#0					;SQRTEST begins at 0, and may not be necessary to declare. edit: removed

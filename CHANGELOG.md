@@ -6,8 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ##[Unreleased]
 ### Added
-- Square function	@cday
-- Division function 	@cday
+- Square function			@cday
+- Division function 			@cday
+- Added prompt file			@Alex
+- Modified the return on multiple files @Dayson
+- Added SquareRoot file			@Dayson
+- Edited square root file		@caiden
+
 
 
 
