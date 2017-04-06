@@ -22,6 +22,39 @@
 
 	LEA	R0, RSLT	; "The distance between the two points is "
 
+	; FOR INPUT
+	;
+	; TENS
+	; if the input is 10-19
+	;	load 10 if first digit is 1, add last digit of input to 10	->	TENS	.FILL 	10
+	; if the input is 20-29
+	;	load 20 if first digit is 2, add last digit of input to 20	->	TWEN	.FILL 	20
+	; if the input is 30-39
+	;	load 30 if first digit is 3, add last digit of input to 30	->	THIR	.FILL 	30
+	; if the input is 40-49
+	;	load 40 if first digit is 4, add last digit of input to 40	->	FOUR	.FILL	40
+	; if the input is 50-59
+	;	load 50 if first digit is 5, add last digit of input to 50	->	FIFT	.FILL	50
+	; if the input is 60-69
+	;	load 60 if first digit is 6, add last digit of input to 60	->	SIXT	.FILL	60
+	; if the input is 70-79
+	;	load 70 if first digit is 7, add last digit of input to 70	->	SEVE	.FILL	70
+	; if the input is 80-89
+	;	load 80 if first digit is 8, add last digit of input to 80	->	EIGH	.FILL	80
+	; if the input is 90-99
+	;	load 90 if first digit is 9, add last digit of input to 90	->	NINE	.FILL	90
+	;
+	; HUNDREADS
+	; if the input is 100-199
+	;	load 100 if the fisrt digit is 1, add 10-19 if the second digit is 1-9, and then add the last digit	->	ONEH	.FILL	100
+	; if the input is 200-256
+	;	load 200 if the fisrt digit is 2, add 10-19 if the second digit is 1-9, and then add the last digit	->	TWOH	.FILL	200
+	;
+	; FOR OUTPUT
+	;
+	; TENS
+	; 
+
 	; use function for distance calculator		TEST WITH ADDING: ADD R0, R2, R1
 
 	; These instructions are the tricky part, this is how the result can print more than two digits.
@@ -36,10 +69,10 @@
 	BRnz	DONE		; if the answer is a single digit, print
 	ADD	R2, R0, 0	; else, store the digits in R2
 
-	LD	R0, pONE	; get 1
+	LD	R0, pONE	; get 1, put it in front of R2
 	OUT
 
-	ADD	R0, R2, -10	; get the second digit
+	ADD	R0, R2, -10	; get the second digit by subtracting the number by 10, with 1 placed in front
 DONE	OUT
 
 	HALT
