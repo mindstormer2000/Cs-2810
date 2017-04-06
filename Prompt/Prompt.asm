@@ -53,7 +53,10 @@
 	; FOR OUTPUT
 	;
 	; TENS
-	; 
+	; if the result is >= 10...90 and < 20...100, subtract it by 10...90, place a 1...9 in front, and output the 1...9 and the result
+	;
+	; HUNDREADS
+	; if it's >= 100 or 200 and < 200 or 257, subtract by 100 or 200, jump the result to one of the TENS functions, and output a 1 or 2 in front
 
 	; use function for distance calculator		TEST WITH ADDING: ADD R0, R2, R1
 
