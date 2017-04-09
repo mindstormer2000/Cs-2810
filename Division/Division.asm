@@ -2,9 +2,9 @@
 	;The outputs will be put into the memory at two different locations
 	;Outputs: Remainder, Answer
 	;Inputs: Divided, Divisor
-	.ORIG x3000
+	.ORIG x0000
 ;Clear out the final register
-	AND R5,R5,#0 
+	AND R5,R5,#0
 ;Store the return address for later use
 	STI R7, RETURN
 ;Load the two inputs
@@ -64,7 +64,7 @@ ZERO	ST R6 REMDER
 	BRnzp JUMP
 ;Jump back to the position in PCJUMP VAR
 JUMP	LDI R7 RETURN	;Load into R7 the area where the code should go after running
-	LD  R2 TOTAL	;Put total into R2 
+	LD  R2 TOTAL	;Put total into R2 because I cannot for the life of me figure out cross-code variable storage
 	RET		;Returns to the line after the one that called the Division code	
 ;All the variables
 	HALT
@@ -75,5 +75,5 @@ DIVIDED	.FILL #10
 REMDER	.FILL #1
 TOTAL	.FILL #3
 RETURN	.FILL x4000
-			
+			;PCJUMP	.FILL x0000 - No longer necessary with RETURN
 	.END

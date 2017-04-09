@@ -1,5 +1,6 @@
-.ORIG x3200					;For Division to work, Registers 7, 6, and 5 need to be open. Division is R6/R7=TOTAL,REMDER
+.ORIG x3000					;For Division to work, Registers 7, 6, and 5 need to be open. Division is R6/R7=TOTAL,REMDER
 						;Square code also requires 7, 6, and 5 be open.
+						
 	LD	R0 	NUMBER			;R0 holds Number. Will later need to work with Input from framework
 	LD	R1 	NUMBER			;R1 holds Previous. This is used when/if the loop fails the first time to store previous numbers. Begins as Number.
 	AND	R2	R2,#0			;R2 remains open for TOTAL to go into. All dividends are stored in R2.

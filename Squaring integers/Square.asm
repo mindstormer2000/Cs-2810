@@ -2,7 +2,7 @@
 	;Inputs: an integer placed into the input var
 	;Outputs: The integer squared
 	;Needed registers: r7,r6,r5
-	.ORIG x3300
+	.ORIG x2000
 
 	AND R5,R5,#0	;Clear out the final register
 	STI R7,RETURN	;Stores the return address for later use
