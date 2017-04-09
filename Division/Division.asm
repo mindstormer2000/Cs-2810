@@ -2,7 +2,7 @@
 	;The outputs will be put into the memory at two different locations
 	;Outputs: Remainder, Answer
 	;Inputs: Divided, Divisor
-	.ORIG x0000
+	.ORIG x3000
 ;Clear out the final register
 	AND R5,R5,#0
 ;Store the return address for later use
@@ -75,5 +75,4 @@ DIVIDED	.FILL #10
 REMDER	.FILL #1
 TOTAL	.FILL #3
 RETURN	.FILL x4000
-			;PCJUMP	.FILL x0000 - No longer necessary with RETURN
-	.END
+				.END

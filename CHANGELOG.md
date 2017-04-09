@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Modified the return on multiple files @Dayson
 - Added SquareRoot file			@Dayson
 - Edited square root file		@caiden
-<<<<<<< .merge_file_BIwCEA
 - Updated Addresses of each file	@caiden
 	- Division is now at x3000
 	- Prompt is now at x3100
@@ -25,11 +24,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Duplicated squareroot file		@caiden
 - Trying to consolidate squareroot file	@caiden
 - Fixed Github error			@caiden
-
-=======
->>>>>>> .merge_file_8l44bU
-
-
 
 
 [0.0.1] https://github.com/mindstormer2000/Cs-2810

@@ -1,4 +1,4 @@
-.ORIG x3000    ; start address in memory
+.ORIG x3400    ; start address in memory
 
 Halt    ; stop the program
 .END

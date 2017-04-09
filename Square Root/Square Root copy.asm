@@ -1,5 +1,4 @@
 .ORIG x3200	
-	
 LOOP ;Store the return address for later use
 	STI R7, RETURN
 	LD R2 DIVDER 
