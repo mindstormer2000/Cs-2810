@@ -34,3 +34,11 @@ http://www.seas.upenn.edu/~cit593/resources/LC3code/PennSim.jar
 5. Type in the console Continue
 
 ### Getting Started (Win)
+
+### Loading the files
+FILES MUST BE LOADED IN THIS ORDER TO WORK
+1. Division
+2. Prompt
+3. Square Root
+4. Square
+5. Program
