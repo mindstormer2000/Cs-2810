@@ -11,7 +11,12 @@
 	LEA	R0, PRMT1	; "Enter the value for point A from 0 to 256: "
 	PUTS
 	GETC			; get first number
+	; check to make sure it's a number
+	; check to see if it's a newline
+	; if it is a number
 	OUT			; print entered character in R0
+	; increment for character count
+	; check to see if it's three
 	ADD	R1, R0, 0	; put the first number in R1
 
 	LEA	R0, PRMT2	; "Enter the value for point B from 0 to 256: "
