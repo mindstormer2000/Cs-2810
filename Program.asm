@@ -6,21 +6,25 @@
 ;Get X1
 	LEA R0 XONEP
 	PUTS
-	JSRR PROMPT
-	
+	LD R6 PROMPT
+	JSRR R6
+	ST R3 XONE
 ;Get Y1
 	LEA R0 YONEP
 	PUTS
-	JSRR PROMPT
+	LD R6 PROMPT
+	JSRR R6
 
 ;Get X2
 	LEA R0 XTWOP
 	PUTS
-	JSRR PROMPT
+	LD R6 PROMPT
+	JSRR R6
 ;Get Y2
 	LEA R0 YTWOP
 	PUTS
-	JSRR PROMPT
+	LD R6 PROMPT
+	JSRR R6
 ;Subtract x1 from x2
 
 ;Square above items
@@ -32,10 +36,11 @@
 
 DONE	Halt    ; stop the program
 ;Variables
-XONE	.FILL	 #0
-XTWO	.FILL	 #0
-YONE	.FILL	 #0
-YTWO	.FILL	 #0
+XONE	.FILL	#0
+XTWO	.FILL	#0
+YONE	.FILL	#0
+YTWO	.FILL	#0
+PROMPT	.FILL	x3100
 EXAMP	.STRINGZ "The format we are using for finding the distance is as follows\n SQRT((x2-x1)^2+(y2-y1)^2)\n"
 XONEP	.STRINGZ "Please input X1"
 XTWOP	.STRINGZ "Please input X2"

@@ -1,14 +1,23 @@
 	;This program takes two numbers and divides them.
 	;The outputs will be put into the memory at two different locations
-	;Outputs: Remainder, Answer
-	;Inputs: Divided, Divisor
+	;Outputs: Remainder(), Answer()
+	;Inputs: Divided(R3), Divisor(r2)
 	.ORIG x3000
-;Clear out the final register
-	AND R5,R5,#0
 ;Store the return address for later use
 	STI R7, RETURN
 ;Load the two inputs
 	ST R3 DIVIDED	;Push R3, the divided into DIVIDED
+	ST R2 DIVISOR	;Push r2 into the divisor
+;Clear out the registers
+	AND R0,R5,#0
+	AND R1,R5,#0
+	AND R2,R5,#0
+	AND R3,R5,#0
+	AND R4,R5,#0
+	AND R5,R5,#0
+	AND R6,R5,#0
+	AND R7,R5,#0
+;LOAD NEEDED ITEMS
 	LD R7 DIVISOR	;Load the integer into r7
 	LD R6 DIVIDED	;LOAD the integer into r6
 ;Check to see if the number being divided is zero	
@@ -64,7 +73,8 @@ ZERO	ST R6 REMDER
 	BRnzp JUMP
 ;Jump back to the position in PCJUMP VAR
 JUMP	LDI R7 RETURN	;Load into R7 the area where the code should go after running
-	LD  R2 TOTAL	;Put total into R2 because I cannot for the life of me figure out cross-code variable storage
+	LD	R2	TOTAL	;Put total into R2
+	LD	R3	REMDER	;Put Rembdr into R3
 	RET		;Returns to the line after the one that called the Division code	
 ;All the variables
 	HALT
