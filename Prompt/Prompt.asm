@@ -3,7 +3,7 @@
 	; I also don't quite know what to input into the other functions and where they go
 	; Hopefully these instructions are a little help
 
-	.ORIG	x3000
+	.ORIG	x3100
 
 	; These instructions are the promting part of the program where the user enter the values
 	; For now, they're just single digit values
