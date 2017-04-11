@@ -34,12 +34,34 @@
 	ADD R1, R1, #1
 	;Add -x1 to x2
 	LD R2 XTWO
-	ADD R5, R1, R2
-	
-;Square above items
+	ADD R2, R1, R2
+	LD R6, SQUARE
+	JSRR R6
+	ST R3, XSQ
 ;Subtract y1 from y2
-;Square above items
-;Add the above squares
+	;Twos complement y1
+	LD R3, YONE
+	NOT R3, R3
+	ADD R3, R3, #1
+	;Add -y1 to y2
+	LD R4 YTWO
+	ADD R2, R3, R4
+	LD R6, SQUARE
+	JSRR R6
+	ST R3, YSQ
+;Clear all registers
+	AND R0,R5,#0
+	AND R1,R5,#0
+	AND R2,R5,#0
+	AND R3,R5,#0
+	AND R4,R5,#0
+	AND R5,R5,#0
+	AND R6,R5,#0
+	AND R7,R5,#0
+;Load needed inputs
+	LD R1, XSQ
+	LD R2, YSQ
+	ADD R3, R1, R2
 ;Square root above answer
 ;Output answer
 
@@ -49,7 +71,11 @@ XONE	.FILL	#0
 XTWO	.FILL	#0
 YONE	.FILL	#0
 YTWO	.FILL	#0
+XSQ	.FILL	#0
+YSQ	.FILL	#0
 PROMPT	.FILL	x3100
+SQUARE	.FILL	x3300
+ROOT	.FILL	x3200
 EXAMP	.STRINGZ "The format we are using for finding the distance is as follows\n SQRT((x2-x1)^2+(y2-y1)^2)\n"
 XONEP	.STRINGZ "Please input X1"
 XTWOP	.STRINGZ "Please input X2"
