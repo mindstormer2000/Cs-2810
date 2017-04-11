@@ -29,7 +29,6 @@
 	BRn NEG
 	BRp POS
 	BRz ZERO
-
 ;Division if the one being divided is positive
 POS	ADD R7, R7, #0
 	BRn LOOPPOS

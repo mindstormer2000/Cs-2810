@@ -9,13 +9,21 @@
 	ST R2 INPUT	;Input is the contents of r2
 	LD R7 INPUT	;Load the integer into r7
 	LD R6 INPUT	;LOAD the integer into r6
+	ADD R6,R6,#0
+	BRpz MULTY
+	NOT R2, R2
+	ADD R2, R2, #-1
+	NOT R7, R7
+	ADD R7, R7, #-1
+	NOT R6, R6
+	ADD R6, R6, #-1
 
 MULTY 	ADD R5,R5,R7	;ADD R7 TO R5
 	ADD R6,R6,#-1	;DECREMENT R6
 	BRp MULTY	;IF R6>0 GO TO MULTY
 
 	ST R5 OUTPUT	;STORE R5 INTO OUTPUT
-	LD R3 OUTPUT	;In a move of comical inefficiency, immediately pulls output back into R3 because I know how variables work
+	LD R3 OUTPUT	
 	LDI R7 RETURN	;Load into R7 the area where the code should go after running
 	RET		;Go to that area
 	HALT		;STOP
