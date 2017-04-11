@@ -1,6 +1,6 @@
 	;This program takes two numbers and divides them.
 	;The outputs will be put into the memory at two different locations
-	;Outputs: Remainder(), Answer()
+	;Outputs: Remainder(r3), Answer(r2)
 	;Inputs: Divided(R3), Divisor(r2)
 	.ORIG x3000
 ;Store the return address for later use
