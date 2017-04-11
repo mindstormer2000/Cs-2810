@@ -8,7 +8,7 @@
 	; R2 = (50-48) * 10  = 2 * 10
 	; R3 = (51-48) 	     = 3
 	; Input: 123 as separate characters
-	: Postcondition: input = (1 * 100) + (2 * 10) + 3 = 123 as an actual number (0000000001111011)
+	: Postcondition: input = (1 * 100) + (2 * 10) + 3 = 123 as an actual number (0000000001111011).
 
 
 	LEA	R0, PRMT	; "Enter a number from 0 to 256: "
