@@ -37,8 +37,8 @@ BACK	ADD	R1, R1, -48	; translates the character into an integer
 	BRz	ONE_DIGIT	; branch to the ONE_DIGIT loop
 
 	; This might have to be moved before the ONE_DIGIT loop
-	ADD	R2, R2, -48	; translates the character into an integer
-	ADD	R5, R5, #1	; increment R4 for digit count (2)
+	ADD	R2, R2, #-38	; translates the character into an integer
+	ADD	R5, R5, #1	; increment R5 for digit count (2)
 
 	GETC			; get the third character entered by the user (third digit)
 	OUT			; output the character as it's being typed
@@ -47,14 +47,9 @@ BACK	ADD	R1, R1, -48	; translates the character into an integer
 	BRz	TWO_DIGIT_R1x10	; brahcn to the TWO_DIGIT_R1x10 loop
 
 	; This might have to be moved before the TWO_DIGIT_R1x10 loop
-	ADD	R3, R3, -48	; translates the character into an integer
-	ADD	R5, R5, #1	; increment R4 for digit count (3)
-
-	GETC			; get the fourth character, should be newline
-	OUT			; output the newline
-	ADD	R4, R0, 0	; put the newline into R4
-	ADD	R4, R4, #-10	; if ((R4 - 10) == 0), or if R3 == newline
-	BRz	THREE_DIGIT_R1x100
+	ADD	R3, R3, #-38	; translates the character into an integer
+	ADD	R5, R5, #1	; increment R5 for digit count (3)
+	BRnzp	THREE_DIGIT_R1x100
 
 	; if R1 = newline
 		; please enter a number

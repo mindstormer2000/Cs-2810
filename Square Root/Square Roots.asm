@@ -2,9 +2,7 @@
 ;Created by Dayson and Caiden
 ;Inputs R3 = Inside
 ;output R3 = Outside, R4 = Inside
-;I have still not figured out how to make variables work cross-code, so for the time being I'm falling back on Registers.
-;If somebody who actually knows what they're doing happens to see this disaster and wishes to rectify it, please save my soul. Thank you.
-;Division inputs Divided at R3 and Divisor at R2 and outputs the total to R2 and the Remainder to R3. Uses R5, R6, and R7.
+;Division inputs: Divided at R3 and Divisor at R2 and outputs the total to R2 and the Remainder to R3. Uses R5, R6, and R7.
 ;!!!I am modifying the Division code to output the total to R4 and the remainder to R1
 
 .ORIG x3200
