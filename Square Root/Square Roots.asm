@@ -3,7 +3,7 @@
 ;Inputs R3 = Inside
 ;output R3 = Outside, R4 = Inside
 ;Division inputs: Divided at R3 and Divisor at R2 and outputs the total to R2 and the Remainder to R3. Uses R5, R6, and R7.
-;!!!I am modifying the Division code to output the total to R4 and the remainder to R1
+
 
 .ORIG x3200
 	LD 	R1 	Remainder;/Outside/Test	;R1 holds the number outside the square root, as well as the remainder of division

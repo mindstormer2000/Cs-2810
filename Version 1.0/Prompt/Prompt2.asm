@@ -19,47 +19,60 @@
 
 	LEA	R0, PRMT	; "Enter a number from 0 to 180: "
 	PUTS
-	AND R4,R4,#0
+	AND R6,R6,#0
 
-GETNUM	GETC			; get the first character entered by the user (first digit)
-	ADD	R1, R0, 0	; put the first digit in R1
+GETNUM	GETC			; get the character entered by the user (first digit)
+	ADD	R1, R0, 0	; put the digit in R1
 	ADD	R1, R1, #-10	; if ((R1 - 10) == 0), or if R1 == newline
 	BRz	EXIT
 	ADD	R1, R1, #10	; if ((R1 - 10) == 0), or if R1 == newline
-	JSRR 	CHECK
-	ADD R1, R1, #-48
-	JSRR TIMESTE
-	ADD R4,R4, R1
-	ADD R5,R5,#-3
-	BRnz GOBACK
+	LEA 	R7, CHECK
+	JSRR 	R7
+	ADD	R0, R1, #0
+	OUT
+	LD 	R2, ASCIIB
+	ADD 	R1, R1, R2
+	LEA 	R7, TIMEST
+	JSRR 	R7
+	ADD 	R6,R6, R1
+	ADD 	R5,R5,#-2
+	BRzp 	GOBACK
+	ADD	R5, R5, #3
+	BRnzp	GETNUM
 
 	;Uses r1, r2, r3
-CHECK	ADD R2, R1, #-48	;Check to see if below ascii numbers
-	BRn ERROR
-	ADD R2, R1, #-57	;Check to see if above ascii numbers
-	BRp ERROR
+CHECK	LD 	R2, ASCIIB
+	ADD 	R2, R2, R1		;Check to see if below ascii numbers
+	BRn 	ERROR
+	LD 	R2, ASCIIA
+	ADD 	R2, R2, R1		;Check to see if above ascii numbers
+	BRp 	ERROR
 	RET
 	
-ERROR	LEA R0,EMESG
+ERROR	LEA 	R0,EMESG
 	PUTS
-	JMP BACK
+	LEA	R7, GETNUM
+	JMP 	R7
 
 	;uses R4 r2 r3
 	;Takes r1 times 10
-TIMESTE	ADD R2, R4, #0
-	ADD R3, #0,#10
-	ADD R4,R4,R2
-	ADD R3, R3,#-1
-	BRp TIMESTE
+TIMEST	AND 	R3, R3, #0
+	ADD	R3, R3, #9
+	ADD 	R2, R6, #0
+TIMESTE	ADD 	R6,R6,R2
+	ADD 	R3, R3,#-1
+	BRp 	TIMESTE
 	RET
 
-EXIT	ADD R5, R5,#0
-	BRz ERROR
+EXIT	ADD 	R5, R5,#0
+	BRz 	ERROR
 
-GOBACK	LD R7, JUMPER
+GOBACK	LD 	R7, JUMPER
 	RET
 HALT
-JUMPER	.FILL	#O
+JUMPER	.FILL	x0000
+ASCIIB	.FILL	#-48
+ASCIIA	.FILL	#-57
 PRMT	.stringz "\nEnter a number from 0 to 180: "
 EMESG	.stringz "\nERROR:That is not valid input"
 
