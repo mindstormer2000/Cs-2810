@@ -24,5 +24,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Duplicated squareroot file		@caiden
 - Trying to consolidate squareroot file	@caiden
 - Fixed Github error			@caiden
-- Updated code for detecting number of digits in user input
+- Updated code for detecting number of digits in user input @alex
+- Now using loop to get input		@caiden
 [0.0.1] https://github.com/mindstormer2000/Cs-2810
