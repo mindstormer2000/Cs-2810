@@ -17,7 +17,7 @@
 	; R6 = final result
 	ST	R7, JUMPER
 
-	LEA	R0, PRMT	; "Enter a number from 0 to 180: "
+STRT	LEA	R0, PRMT	; "Enter a number from 0 to 180: "
 	PUTS
 	AND R6,R6,#0
 
@@ -36,7 +36,7 @@ GETNUM	GETC			; get the character entered by the user (first digit)
 	JSRR 	R7
 	ADD 	R6,R6, R1
 	ADD 	R5,R5,#-2
-	BRzp 	GOBACK
+	BRzp 	CKTWO
 	ADD	R5, R5, #3
 	BRnzp	GETNUM
 
@@ -48,6 +48,13 @@ CHECK	LD 	R2, ASCIIB
 	ADD 	R2, R2, R1		;Check to see if above ascii numbers
 	BRp 	ERROR
 	RET
+
+CKTWO	LD	R2, MAX
+	ADD 	R2, R2, R6
+	BRnz	GOBACK
+	LEA 	R0,EMESG
+	PUTS
+	BRnzp	STRT
 	
 ERROR	LEA 	R0,EMESG
 	PUTS
@@ -67,12 +74,14 @@ TIMESTE	ADD 	R6,R6,R2
 EXIT	ADD 	R5, R5,#0
 	BRz 	ERROR
 
-GOBACK	LD 	R7, JUMPER
+GOBACK	ADD	R3, R6, #0
+	LD 	R7, JUMPER
 	RET
 HALT
 JUMPER	.FILL	x0000
 ASCIIB	.FILL	#-48
 ASCIIA	.FILL	#-57
+MAX	.FILL	#-180
 PRMT	.stringz "\nEnter a number from 0 to 180: "
 EMESG	.stringz "\nERROR:That is not valid input"
 

@@ -1,4 +1,4 @@
-.ORIG x3400    ; start address in memory
+.ORIG x3500    ; start address in memory
 ;Output format
 	LEA R0, EXAMP
 	PUTS
@@ -61,14 +61,17 @@
 ;Load needed inputs
 	LD R1, XSQ
 	LD R2, YSQ
-	ADD R0, R1, R2
+	ADD R3, R1, R2
 ;Square root above answer
 	LD R7 ROOT
 	JSRR R7
 ;Save stuff that comes back
-	ST R0 FIN
+	ST R3 OUTSIDE
+	ST R4 INSIDE
 ;Output answer
-	
+	LD	R7	OUTPUT
+	JSRR	R7
+
 
 DONE	Halt    ; stop the program
 ;Variables
@@ -78,10 +81,12 @@ YONE	.FILL	#0
 YTWO	.FILL	#0
 XSQ	.FILL	#0
 YSQ	.FILL	#0
-FIN	.FILL	#0
+INSIDE	.FILL	#0
+OUTSIDE	.FILL	#0
 PROMPT	.FILL	x3100
 SQUARE	.FILL	x3300
 ROOT	.FILL	x3200
+OUTPUT	.FILL	x3400
 EXAMP	.STRINGZ "The format we are using for finding the distance is as follows\n SQRT((x2-x1)^2+(y2-y1)^2)\n"
 XONEP	.STRINGZ "Please input X1"
 XTWOP	.STRINGZ "Please input X2"
