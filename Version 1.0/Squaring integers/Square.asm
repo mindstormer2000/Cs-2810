@@ -23,7 +23,15 @@ MULTY 	ADD R5,R5,R7	;ADD R7 TO R5
 	BRp MULTY	;IF R6>0 GO TO MULTY
 
 	ST R5 OUTPUT	;STORE R5 INTO OUTPUT
-;	LD R2 OUTPUT	;Load the Output into R2
+	AND 	R0,	R5,	#0
+	AND 	R1,	R5,	#0
+	AND 	R2,	R5,	#0
+	AND 	R3,	R5,	#0
+	AND 	R4,	R5,	#0
+	AND 	R5,	R5,	#0
+	AND 	R6,	R5,	#0
+	AND 	R7,	R5,	#0
+	LD R2 OUTPUT	;Load the Output into R2
 	LDI R7 RETURN	;Load into R7 the area where the code should go after running
 	RET		;Go to that area
 	HALT		;STOP

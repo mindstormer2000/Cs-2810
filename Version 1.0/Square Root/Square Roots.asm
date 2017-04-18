@@ -6,6 +6,7 @@
 
 
 .ORIG x3200
+	ST	R7	JUMPER
 	ST 	R3, INSIDE
 	ADD	R3	R3	#0
 	BRnz	ZERO
@@ -18,6 +19,9 @@
 	AND 	R4,	R5,	#0
 	AND 	R5,	R5,	#0
 	AND 	R6,	R5,	#0
+	AND 	R7,	R5,	#0
+	ADD	R7	R7,	#1
+	ST	R7	OUTSIDE
 	AND 	R7,	R5,	#0
 START	LD  	R3 	INSIDE
 	LD	R2	DIVISOR
@@ -75,7 +79,8 @@ GOBACK	AND 	R0,	R5,	#0
 	AND 	R7,	R5,	#0
 	LD 	R4, 	INSIDE
 	LD	R3,	OUTSIDE
-
+	LD	R7	JUMPER
+	RET
 	HALT
 
 DIVJUMP	.FILL	x3000				;Address to jump to the division code.
@@ -84,6 +89,7 @@ INSIDE	.FILL 	#1
 DIVISOR	.FILL	#2
 OUTSIDE	.FILL	#1
 TESTTWO	.FILL	#1
+JUMPER	.FILL	x0000
 OOPS   .STRINGZ	"An error has occurred!"
 .END
 
