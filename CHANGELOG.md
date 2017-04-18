@@ -26,4 +26,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed Github error			@caiden
 - Updated code for detecting number of digits in user input @alex
 - Now using loop to get input		@caiden
+- Recreate Division			@caiden
+- Output three digit numbers or greater	@caiden
+- Square root created			@Dayson
+
 [0.0.1] https://github.com/mindstormer2000/Cs-2810
