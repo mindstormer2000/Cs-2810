@@ -101,15 +101,17 @@ LOOP	LEA	R0 	AGAIN
 	ADD	R1	R0	#0
 	LD	R2	ASCIIY
 	ADD	R3	R1	R2
-	BRz	START
+	BRz	GAIN
 	ADD	R1	R0	#0
 	LD	R2	ASCIIy
 	ADD	R3	R1	R2
-	BRz	START
+	BRz	GAIN
 	LEA	R0	ERROR
 	PUTS
 	BRNZP	LOOP
-
+GAIN	LEA	R0	DASH
+	PUTS
+	BRnzp	START
 DONE	Halt    ; stop the program
 ;Variables
 XONE	.FILL	#0
@@ -128,12 +130,12 @@ PROMPT	.FILL	x3100
 SQUARE	.FILL	x3300
 ROOT	.FILL	x3200
 OUTPUT	.FILL	x3400
-EXAMP	.STRINGZ "The format we are using for finding the distance is as follows\n SQRT((x2-x1)^2+(y2-y1)^2)\n"
-XONEP	.STRINGZ "\nPlease input X1"
-XTWOP	.STRINGZ "\nPlease input X2"
-YONEP	.STRINGZ "\nPlease input Y1"
-YTWOP	.STRINGZ "\nPlease input Y2"
-AGAIN	.STRINGZ "\nWould You like to do go again? (Y or N)"
+EXAMP	.STRINGZ "\n\nThe format we are using for finding the distance is as follows\n SQRT((x2-x1)^2+(y2-y1)^2)\n"
+XONEP	.STRINGZ "\n\nPlease input X1"
+XTWOP	.STRINGZ "\n\nPlease input X2"
+YONEP	.STRINGZ "\n\nPlease input Y1"
+YTWOP	.STRINGZ "\n\nPlease input Y2"
+AGAIN	.STRINGZ "\n\nWould You like to do go again? (Y or N)"
 ERROR	.STRINGz "\nINVALID KEY:"
 DASH	.STRINGz "\n\n\n________________________________________________________\n\n\n"
 .END
