@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ##[Unreleased]
 ### Added
-- Square function			@cday
-- Division function 			@cday
+- Square function			@caiden
+- Division function 			@caiden
 - Added prompt file			@Alex
 - Modified the return on multiple files @Dayson
 - Added SquareRoot file			@Dayson
@@ -29,5 +29,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Recreate Division			@caiden
 - Output three digit numbers or greater	@caiden
 - Square root created			@Dayson
-
+- Max binary integer is 0111111111111111. That means that we can only have sqrt(32767/2) as our max inputs. Thus our max input is 127.99999. As we do not support decimals 127 is the max input. Thus we limit it to 120 as a max input @Caiden
 [0.0.1] https://github.com/mindstormer2000/Cs-2810

@@ -91,8 +91,8 @@ STORAGE	.FILL	#0
 JUMPER	.FILL	x0000
 ASCIIB	.FILL	#-48
 ASCIIA	.FILL	#-57
-MAX	.FILL	#-180
-PRMT	.stringz "\nEnter a number from 0 to 180: "
+MAX	.FILL	#-120
+PRMT	.stringz "\nEnter a number from 0 to 120: "
 EMESG	.stringz "\nERROR:That is not valid input"
 
 
