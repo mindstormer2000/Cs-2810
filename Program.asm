@@ -1,33 +1,33 @@
 .ORIG x3500    ; start address in memory
 ;Output format
 START	LEA R0, EXAMP
-	PUTS
+	PUTS                    ;Display "The format we are using ....."
 
 ;Get X1
 	LEA R0, XONEP
-	PUTS
+	PUTS                    ;Display "Please input X1"
 	LD R6, PROMPT
-	JSRR R6
-	ST R3, XONE
+	JSRR R6                 ;Read number
+	ST R3, XONE             ;Store X1
 ;Get Y1
 	LEA R0, YONEP
-	PUTS
+	PUTS                    ;Display "Please input Y1"
 	LD R6, PROMPT
-	JSRR R6
-	ST R3, YONE
+	JSRR R6                 ;Read number
+	ST R3, YONE             ;Store Y1
 ;Get X2
 	LEA R0, XTWOP
-	PUTS
+	PUTS                    ;Display "Please input X2"
 	LD R6, PROMPT
-	JSRR R6
-	ST R3, XTWO
+	JSRR R6                 ;Read number
+	ST R3, XTWO             ;Store X2
 ;Get Y2
 	LEA R0, YTWOP
-	PUTS
+	PUTS                    ;Display "Please input Y2"
 	LD R6, PROMPT
-	JSRR R6
-	ST R3, YTWO
-;Clear all
+	JSRR R6                 ;Read number
+	ST R3, YTWO             ;Store Y2
+;Clear all registers
 	AND 	R0,	R5,	#0
 	AND 	R1,	R5,	#0
 	AND 	R2,	R5,	#0
@@ -40,30 +40,30 @@ START	LEA R0, EXAMP
 	LD	R1	XONE
 	LD	R2	XTWO
 	NOT	R1	R1
-	ADD	R1	R1	#1
-	ADD	R2	R1	R2
-	BRzp	STILLPx
+	ADD	R1	R1	#1          ;r1 = -r1
+	ADD	R2	R1	R2          ;r2 = r2 - r1
+	BRzp	STILLPx         ;if r2 >= 0 goto stillpx
 	NOT	R2	R2
-	ADD	R2	R2	#1
-;Square 
+	ADD	R2	R2	#1          ;r2 = -r2
+;Square
 STILLPx	LD	R7	SQUARE
-	JSRR	R7
-	ST	R2	XSQ
+	JSRR	R7              ;r2 = r2 * r2
+	ST	R2	XSQ             ;xsq = (x1-x2)*(x1-x2)
 
 ;Subtract y1 and y2
 	LD	R1	YONE
 	LD	R2	YTWO
 	NOT	R1	R1
-	ADD	R1	R1	#1
-	ADD	R2	R1	R2
-	BRzp	STILLPy
+	ADD	R1	R1	#1          ;r1 = -r1
+	ADD	R2	R1	R2          ;r2 = r2 - r1
+	BRzp	STILLPy         ;if r2 >= 0 goto stillpy
 	NOT	R2	R2
-	ADD	R2	R2	#1
-;Square 
+	ADD	R2	R2	#1          ;r2 = -r2
+;Square
 STILLPy	LD	R7	SQUARE
-	JSRR	R7
-	ST	R2	YSQ
-;Clear all
+	JSRR	R7              ;r2 = r2 * r2
+	ST	R2	YSQ             ;ysq = (y1-y2)*(y1-y2)
+;Clear all registers
 	AND 	R0,	R5,	#0
 	AND 	R1,	R5,	#0
 	AND 	R2,	R5,	#0
@@ -75,43 +75,43 @@ STILLPy	LD	R7	SQUARE
 ;ADD YSQ andXSQ
 	LD	R1	XSQ
 	LD	R2	YSQ
-	ADD	R3	R2	R1
+	ADD	R3	R2	R1          ;r3 = xsq + ysq
 ;SQUARE ROOT
 	LD	R7	ROOT
-	JSRR	R7
+	JSRR	R7              ;r3 = squareroot(r3)
 ;Output it
 	LD	R7	OUTPUT
-	JSRR	R7
+	JSRR	R7              ;display number
 ;R0 is input
 ;R1 is input copy
 ;R2 is the test ascii code
 ;R3 is the total of the above
-;AGAIN? 
+;AGAIN?
 LOOP	LEA	R0 	AGAIN
-	PUTS
-	GETC
-	ADD	R1	R0	#0
+	PUTS                       ;Display "Would You like to do go again? (Y or N)"
+	GETC                    ;read a character
+	ADD	R1	R0	#0          ;copy r0 to r1
 	LD	R2	ASCIIN
 	ADD	R3	R1	R2
-	BRz	DONE
+	BRz	DONE                ;if 'N' entered goto DONE
 	ADD	R1	R0	#0
 	LD	R2	ASCIIn
 	ADD	R3	R1	R2
-	BRz	DONE
+	BRz	DONE                ;if 'n' entered goto DONE
 	ADD	R1	R0	#0
 	LD	R2	ASCIIY
 	ADD	R3	R1	R2
-	BRz	GAIN
+	BRz	GAIN                ;if 'Y' entered goto GAIN
 	ADD	R1	R0	#0
 	LD	R2	ASCIIy
 	ADD	R3	R1	R2
-	BRz	GAIN
+	BRz	GAIN                ;if 'y' enter goto GAIN
 	LEA	R0	ERROR
-	PUTS
-	BRNZP	LOOP
+	PUTS                    ;display "INVALID KEY:"
+	BRNZP	LOOP            ;go back and get Y/N again
 GAIN	LEA	R0	DASH
-	PUTS
-	BRnzp	START
+	PUTS                    ;display "______________________..."
+	BRnzp	START           ;go back and ask for x1, and others again
 DONE	Halt    ; stop the program
 ;Variables
 XONE	.FILL	#0
@@ -126,10 +126,10 @@ ASCIIN	.FILL	#-78
 ASCIIn	.FILL	#-110
 ASCIIY	.FILL	#-89
 ASCIIy	.FILL	#-121
-PROMPT	.FILL	x3100
-SQUARE	.FILL	x3300
-ROOT	.FILL	x3200
-OUTPUT	.FILL	x3400
+PROMPT	.FILL	x3100           ;Prompt subroutine
+SQUARE	.FILL	x3300           ;Square subroutine
+ROOT	.FILL	x3200           ;Square root subroutine
+OUTPUT	.FILL	x3400           ;Output subroutine
 EXAMP	.STRINGZ "\n\nThe format we are using for finding the distance is as follows\n SQRT((x2-x1)^2+(y2-y1)^2)\n"
 XONEP	.STRINGZ "\n\nPlease input X1"
 XTWOP	.STRINGZ "\n\nPlease input X2"

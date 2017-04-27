@@ -1,6 +1,7 @@
 # CS2810 Group 4 Project
 
 ## Project Description
+This is a simple distance calculator. the files in the beta folder are not working. The files in the version1.0 folder are all working. All .asm files have their .objs in version 1.0/OBJS folder.
 
 ### Getting Started (Mac)
 
@@ -33,7 +34,6 @@ http://www.seas.upenn.edu/~cit593/resources/LC3code/PennSim.jar
 
 5. Type in the console Continue
 
-### Getting Started (Win)
 
 ### Loading the files
 FILES MUST BE LOADED IN THIS ORDER TO WORK
